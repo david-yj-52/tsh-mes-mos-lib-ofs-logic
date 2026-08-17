@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.tsh.starter.befw</groupId>
+        <artifactId>befw</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.tsh.mes.mos.lib.ofs</groupId>
+    <artifactId>ofs-logic</artifactId>
+    <name>ofs-logic</name>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <ofs-lib-core>1.0.0-SNAPSHOT</ofs-lib-core>
+        <mes-lib-spec>1.0.0-SNAPSHOT</mes-lib-spec>
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+
+            <groupId>com.tsh.mes.lib.spec</groupId>
+            <artifactId>mes-lib-spec</artifactId>
+            <version>${mes-lib-spec}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tsh.mes.mos.lib.ofs</groupId>
+            <artifactId>mos-ofs-core</artifactId>
+            <version>${ofs-lib-core}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.12.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.12.6</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.12.6</version>
+            <scope>runtime</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- kotlin-maven-plugin 제거 후 maven-compiler-plugin으로 교체 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--
+        befw-lib-core는 별도 GitHub 저장소라 로컬 relativePath(../pom.xml)로 parent를 찾을 수 없습니다.
+        CI(및 로컬 최초 빌드)에서 GitHub Packages에 배포된 befw parent pom을 내려받도록 등록합니다.
+    -->
+    <repositories>
+        <repository>
+            <id>github-befw</id>
+            <url>https://maven.pkg.github.com/david-yj-52/befw</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <!-- befw-lib-core 자체를 GitHub Packages에 배포합니다. -->
+    <distributionManagement>
+        <repository>
+            <id>github-lib-core</id>
+            <name>GitHub Packages - befw-lib-core</name>
+            <url>https://maven.pkg.github.com/david-yj-52/befw-lib-core</url>
+        </repository>
+    </distributionManagement>
+
+</project>
