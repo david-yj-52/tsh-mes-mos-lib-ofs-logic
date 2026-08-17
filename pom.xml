@@ -17,6 +17,7 @@
 
     <properties>
         <ofs-lib-core>1.0.0-SNAPSHOT</ofs-lib-core>
+        <ofs-lib-data>1.0.0-SNAPSHOT</ofs-lib-data>
         <mes-lib-spec>1.0.0-SNAPSHOT</mes-lib-spec>
     </properties>
 
@@ -24,7 +25,6 @@
     <dependencies>
 
         <dependency>
-
             <groupId>com.tsh.mes.lib.spec</groupId>
             <artifactId>mes-lib-spec</artifactId>
             <version>${mes-lib-spec}</version>
@@ -38,32 +38,11 @@
 
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>com.tsh.mes.mos.lib.ofs</groupId>
+            <artifactId>ofs-data</artifactId>
+            <version>${ofs-lib-data}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.12.6</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>0.12.6</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId>
-            <version>0.12.6</version>
-            <scope>runtime</scope>
-        </dependency>
 
     </dependencies>
 
