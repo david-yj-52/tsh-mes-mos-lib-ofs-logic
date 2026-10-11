@@ -17,5 +17,4 @@ public class MovementDataProvider {
 	private final WipDataProvider wipDataProvider;
 	private final MnTransferJobReader mnTransferJobReader;
 
-
 }
